@@ -1,11 +1,16 @@
 package com.meko.study.starter.Launcher;
 
+import com.meko.study.starter.entity.UserInfo;
 import io.vertx.core.Context;
+import io.vertx.core.json.JsonArray;
 
 public class MainLauncher {
 
     public static void main(String[] args) {
         final boolean isClustered = false;
+        JsonArray objects = new JsonArray();
+        objects.add(new UserInfo());
+
         final Launcher launcher = isClustered ? new ClusterLauncher() :
                 new SingleLauncher();
         System.out.println(Thread.currentThread().getName() + ","

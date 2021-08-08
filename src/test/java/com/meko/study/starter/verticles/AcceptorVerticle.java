@@ -29,6 +29,6 @@ public class AcceptorVerticle extends AbstractVerticle {
                     });
         });
 
-        server.listen(8099);
+        server.listen(8010);
     }
 }

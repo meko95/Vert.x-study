@@ -1,6 +1,7 @@
 package com.meko.study.starter.verticles;
 
 import io.vertx.core.AbstractVerticle;
+import io.vertx.core.Vertx;
 import io.vertx.core.eventbus.EventBus;
 import io.vertx.core.json.JsonObject;
 
@@ -12,6 +13,8 @@ public class WorkerVerticle extends AbstractVerticle {
         final EventBus event = this.vertx.eventBus();
         // 接收消息
         event.<JsonObject>consumer("MSG://EVENT/BUS", reply -> {
+            Vertx vertx = this.vertx;
+
             System.out.println(Thread.currentThread().getName() + ", Consume Message...");
             // 提取接收消息
             final JsonObject message = reply.body();
